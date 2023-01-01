@@ -1,0 +1,8 @@
+<div id="container">
+    <ion-item *ngIf="failure">
+        <ion-label>{{failure}}</ion-label>
+    </ion-item>
+    <ion-button (click)="checkout()" expand="block" fill="clear" shape="round">
+        Proceed to pay
+    </ion-button>
+</div>

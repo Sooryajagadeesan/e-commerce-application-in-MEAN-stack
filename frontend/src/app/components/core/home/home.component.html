@@ -1,0 +1,37 @@
+<div id="container" >
+    <ion-item *ngIf="failure">
+        <ion-label>{{failure}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="categoryFetchFailure">
+        <ion-label>{{categoryFetchFailure}}</ion-label>
+    </ion-item>
+
+    <div id="header">
+        <!-- <ion-select>
+            <ion-select-option value="all" selected="true">All</ion-select-option>
+            <ion-select-option  *ngFor="let category of allCategories" value={{category._id}}>{{category.name}}</ion-select-option>
+        </ion-select> -->
+        <label for="select-category">Category</label>
+        <select name="select-category" id="select-category">
+            <option value="all" selected="true">All</option>
+            <option *ngFor="let category of allCategories" value={{category._id}}>{{category.name}}</option>
+        </select>
+        <label for="select-sorting">Sort By</label>
+        <select name="select-sorting" id="select-sorting">
+            <option value="id" selected="true">Default</option>
+            <option  value="name">Name</option>
+            <option  value="price">Price</option>
+        </select>
+        <label for="select-limit">Limit</label>
+        <select name="select-limit" id="select-limit">
+            <option value="defaultlimit" selected="true">15</option>
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" value={{i}}>{{i}}</option>
+        </select>
+        <ion-button (click)="onFilter()" fill="solid" shape="round">
+            Filter
+        </ion-button>
+    </div>
+    <div id="flex-container">
+        <app-product *ngFor="let product of allProducts" [product]="product"></app-product>
+    </div>
+</div>

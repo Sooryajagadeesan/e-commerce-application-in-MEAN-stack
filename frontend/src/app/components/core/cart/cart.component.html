@@ -1,0 +1,37 @@
+<div id="container">
+    <ion-header id="header">
+        <ion-toolbar>
+            <div id="check-list" *ngIf="getTotalAmount() > 0; else noCartItemsMessage">
+                <h2>Checkout Section</h2>
+                <ion-item color="light" *ngIf="isSignedIn; else elseBlock">
+                    <ion-label>Amount $ {{getTotalAmount()}} </ion-label>
+                    <ion-button [routerLink]="['/order']" expand="block" fill="clear" shape="round">
+                       Place Order
+                    </ion-button>
+                </ion-item>
+                <ng-template #elseBlock>
+                    <ion-item>
+                        <ion-label>To proceed please Sign In here</ion-label>
+                        <ion-button [routerLink]="['/signin']" expand="block" fill="solid" shape="round">
+                            Sign In
+                        </ion-button>
+                    </ion-item>
+                </ng-template>
+            </div>
+        </ion-toolbar>
+    </ion-header>
+    <div id="content">
+        <div id="cart-items">
+            <ion-item color="medium">
+                <ion-label>Cart Items</ion-label>
+            </ion-item>
+            <div id="items">
+                <app-product *ngFor="let product of allCartItems" [product]="product" [addToCart]="false" [removeFromCart]="true" [showModifyBtns]="true"></app-product>
+            </div>
+        </div>
+        
+        <ng-template #noCartItemsMessage>
+          <h1>NO CART ITEMS</h1>
+        </ng-template>
+    </div>
+</div>

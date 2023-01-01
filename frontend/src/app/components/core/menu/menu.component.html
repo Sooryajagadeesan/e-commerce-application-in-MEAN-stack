@@ -1,0 +1,30 @@
+  <ion-split-pane id="menu-container" contentId="main" (ionWillOpen) ="opened($event)" (ionDidClose) ="closed($event)">
+      <ion-menu side="end" contentId="main">
+          <ion-header>
+            <ion-toolbar color="primary">
+              <ion-title>Welcome</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content>
+            <ion-list>
+              <ion-item [routerLink]="['/home']" routerLinkActive="active"  (click)="closeMenu()">Home</ion-item>
+              <ion-item [routerLink]="['/cart']" routerLinkActive="active" (click)="closeMenu()">Cart</ion-item>
+              <ion-item *ngIf="isSignedIn && !isAdmin" [routerLink]="['/profile']" routerLinkActive="active" (click)="closeMenu()">Profile</ion-item>
+              <!-- <ion-item *ngIf="isSignedIn && !isAdmin" [routerLink]="['/orderstatus']" routerLinkActive="active" (click)="closeMenu()">Dashboard</ion-item> -->
+              <ion-item *ngIf="isSignedIn && isAdmin" [routerLink]="['/admin/dashboard']" routerLinkActive="active" (click)="closeMenu()">A. Dashboard</ion-item>
+              <ion-item *ngIf="!(isSignedIn)" [routerLink]="['/signup']" routerLinkActive="active" (click)="closeMenu()">Sign Up</ion-item>
+              <ion-item *ngIf="!(isSignedIn)" [routerLink]="['/signin']" routerLinkActive="active" (click)="closeMenu()">Sign In</ion-item>
+              <ion-item *ngIf="(isSignedIn)" [routerLink]="['/signout']" routerLinkActive="active" (click)="closeMenu()">Sign out</ion-item>
+              <ion-item  [routerLink]="['/contactus']" routerLinkActive="active" (click)="closeMenu()">Contact Us</ion-item>
+              <ion-item  [routerLink]="['/aboutus']" routerLinkActive="active" (click)="closeMenu()">About Us</ion-item>
+            </ion-list>
+          </ion-content>
+        </ion-menu>
+          <div id="main">
+            <ion-toolbar>
+              <!-- <ion-buttons slot="start"> -->
+                <ion-menu-button id="menu-button"></ion-menu-button>
+              <!-- </ion-buttons> -->
+            </ion-toolbar>
+        </div>
+  </ion-split-pane>

@@ -1,0 +1,85 @@
+<div id="container">
+    <ion-item *ngIf="showError" color="danger">
+        <ion-label>{{showError}}</ion-label>
+    </ion-item>
+    <form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+        <h2>Enter the new Product details</h2>
+        <ion-item *ngIf = "success" color="success">
+            <ion-label>Successfully created a product</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Product Name</ion-label>
+            <ion-input type="text" formControlName="name" required="true" placeholder="enter the new product name" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(createProductForm.controls['name'].touched || createProductForm.controls['name'].dirty) && createProductForm.controls['name'].invalid">
+            <ion-item lines="none" *ngIf="createProductForm.controls['name'].errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+            <ion-item lines="none" *ngIf="createProductForm.controls['name'].errors?.['pattern']">
+                <ion-label color="danger">Start with an aphabet*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Product Description</ion-label>
+            <ion-input formControlName="description" type="text" required="true" placeholder="enter the product description"  class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(createProductForm.controls['description'].touched || createProductForm.controls['description'].dirty) && createProductForm.controls['description'].invalid">
+            <ion-item lines="none" *ngIf="createProductForm.controls['description'].errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+            <ion-item lines="none" *ngIf="createProductForm.controls['description'].errors?.['pattern']">
+                <ion-label color="danger">Start with alphabet*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Price Per Unit(Kg.)</ion-label>
+            <ion-input formControlName="price" type="number" required="true" placeholder="enter the unit price of the product" class="form-control" min="1"></ion-input>
+        </ion-item>
+        <div *ngIf="(createProductForm.controls['price'].touched || createProductForm.controls['price'].dirty) && createProductForm.controls['price'].invalid">
+            <ion-item lines="none" *ngIf="createProductForm.controls['price'].errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+            <ion-item lines="none" *ngIf="createProductForm.controls['price'].errors?.['pattern']">
+                <ion-label color="danger">Price must be a positive number*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Category</ion-label>
+            <!-- <ion-input [(ngModel)]="category" type="text" placeholder="enter the category of the product"></ion-input> -->
+            <ion-select interface="popover" formControlName="category" required="true" class="form-control">
+                <div *ngFor = "let category of allCategories">
+                    <ion-select-option value={{category._id}}>{{category.name}}</ion-select-option>
+                </div>
+              </ion-select>
+        </ion-item>
+        <div *ngIf="(createProductForm.controls['category'].touched || createProductForm.controls['category'].dirty) && createProductForm.controls['category'].invalid">
+            <ion-item lines="none" *ngIf="createProductForm.controls['category'].errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Total Stock (in Kgs.)</ion-label>
+            <ion-input formControlName="stock" type="number" required="true" placeholder="enter the stock in number" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(createProductForm.controls['stock'].touched || createProductForm.controls['stock'].dirty) && createProductForm.controls['stock'].invalid">
+            <ion-item lines="none" *ngIf="createProductForm.controls['stock'].errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+            <ion-item lines="none" *ngIf="createProductForm.controls['stock'].errors?.['pattern']">
+                <ion-label color="danger">Stock must be a positive number*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Photo</ion-label>
+            <ion-input  type="file" formControlName="photo" (change)="onFileChange($event)" required="true" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(createProductForm.controls['photo'].touched || createProductForm.controls['photo'].dirty) && createProductForm.controls['photo'].invalid">
+            <ion-item lines="none" *ngIf="createProductForm.controls['photo'].errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-button type="submit"  fill="solid" shape="round">
+            Create 
+        </ion-button>
+    </form>
+</div>

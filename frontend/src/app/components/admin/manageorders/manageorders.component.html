@@ -1,0 +1,75 @@
+<div id="container">
+    <ion-item *ngIf="getFailure" color="warning" >
+      <ion-label>{{getFailure}}</ion-label>
+    </ion-item>
+
+    <div id="content">
+        <ion-card *ngFor="let order of allOrders; let i = index">
+            <ion-card-header>
+                
+                <ion-card-subtitle>{{order.updated | date:'medium'}}</ion-card-subtitle>
+                <ion-card-title>Order ID {{order._id}}</ion-card-title>
+            </ion-card-header>
+    
+            <ion-card-content>
+                <ion-item>
+                    <ion-label>AMOUNT (INR)</ion-label>
+                    <ion-label text-wrap>{{order.amount}}</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Shippment Address</ion-label>
+                    <ion-label text-wrap>{{order.address}}</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Order Status</ion-label>
+                    <ion-label text-wrap id={{i}}>{{order.status}}</ion-label>
+                </ion-item>
+                <ion-accordion-group>
+                    <ion-accordion value="user">
+                      <ion-item slot="header">
+                        <ion-label>User Details</ion-label>
+                      </ion-item>
+                      <ion-list slot="content">
+                        <ion-item>
+                            <ion-label>Name</ion-label>
+                            <ion-label text-wrap>{{order.user.name}}</ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Email</ion-label>
+                            <ion-label text-wrap>{{order.user.email}}</ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>ID</ion-label>
+                            <ion-label text-wrap>{{order.user._id}}</ion-label>
+                        </ion-item>
+                      </ion-list>
+                    </ion-accordion>
+                    <ion-accordion value="product-details">
+                      <ion-item slot="header">
+                        <ion-label>Product Details</ion-label>
+                      </ion-item>
+                  
+                      <ion-list slot="content">
+                        <div *ngFor="let product of order.products; let j = index">
+                            <h2>Product {{j+1}}</h2>
+                            <ion-item>
+                                <ion-label text-wrap>ID: {{product.product}}</ion-label> <br>
+                                <ion-label text-wrap>Name: {{product.name}}</ion-label> <br>
+                                <ion-label text-wrap>Count: {{product.count}}</ion-label> <br>
+                                <ion-label text-wrap>Unit Price: {{product.price}}</ion-label> <br>
+                            </ion-item>
+                        </div>
+                      </ion-list>
+                    </ion-accordion>
+                </ion-accordion-group>
+                
+                <ion-button (click)="presentAlertRadio($event,order,order._id,i)"  fill="solid" shape="round">
+                  Update the Status
+                </ion-button>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</div>
+
+
+

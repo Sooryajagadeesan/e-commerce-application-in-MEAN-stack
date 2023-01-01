@@ -1,0 +1,26 @@
+ion-toolbar {
+    text-align: center;
+}
+.content {
+    margin-top: 100px !important;
+    z-index: -1 !important;
+}
+
+#heading {
+    position: fixed;
+    top: 0;
+}
+
+@media (min-width: 769px) {
+    .content,ion-footer {
+        width: 80% ;
+        margin-left: 20% !important;
+        // margin-top: 30px !important;
+    }
+}
+
+
+
+.footer-container {
+    padding: 0 20px !important;
+}

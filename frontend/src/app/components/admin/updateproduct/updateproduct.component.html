@@ -1,0 +1,85 @@
+<div id="container">
+    <ion-item color="danger" *ngIf="!product._id">
+        <ion-label text-wrap>No product selected to update, Please go To the Manage products and select a product to update</ion-label>
+    </ion-item>
+    <ion-item *ngIf = "success" color="success">
+        <ion-label>Successfully Updated a product</ion-label>
+    </ion-item>
+    <ion-item *ngIf = "showError" color="danger">
+        <ion-label>{{showError}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf = "failure" color="danger">
+        <ion-label>{{failure}}</ion-label>
+    </ion-item>
+    <div id="form" *ngIf = "(product._id || failure) && !success">
+        <h2>Update Product Here</h2>
+        <ion-item>
+            <ion-label position="stacked">Product Name</ion-label>
+            <ion-input [(ngModel)]="name" type="text" #productName = "ngModel" required="true" placeholder="enter the new product name" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(productName.touched || productName.dirty) && productName.invalid">
+            <ion-item lines="none" *ngIf="productName.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Product Description</ion-label>
+            <ion-input [(ngModel)]="description" #productDescription ="ngModel" type="text" required="true" placeholder="enter the product description"  class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(productDescription.touched || productDescription.dirty) && productDescription.invalid">
+            <ion-item lines="none" *ngIf="productDescription.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Price Per Unit(Kg.)</ion-label>
+            <ion-input [(ngModel)]="price" #productPrice = "ngModel" type="number" required="true" placeholder="enter the unit price of the product" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(productPrice.touched || productPrice.dirty) && productPrice.invalid">
+            <ion-item lines="none" *ngIf="productPrice.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Category</ion-label>
+            <!-- <ion-input [(ngModel)]="category" type="text" placeholder="enter the category of the product"></ion-input> -->
+            <ion-select interface="popover" [(ngModel)]="defaultcategory"  #productCategory="ngModel" required="true" class="form-control">
+                <div *ngFor = "let category of allCategories">
+                    <ion-select-option  *ngIf= "! (category._id === product.category._id)" value={{category._id}}>{{category.name}}</ion-select-option>                    
+                    <ion-select-option *ngIf= "category._id === product.category._id"  value={{category._id}}>{{category.name}}</ion-select-option>
+                    
+                </div>
+              </ion-select>
+        </ion-item>
+        <div *ngIf="(productCategory.touched || productCategory.dirty) && productCategory.invalid">
+            <ion-item lines="none" *ngIf="productPrice.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Total Stock (in Kgs.)</ion-label>
+            <ion-input [(ngModel)]="stock" #productStock="ngModel" type="text" required="true" placeholder="enter the stock in number" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(productStock.touched || productStock.dirty) && productStock.invalid">
+            <ion-item lines="none" *ngIf="productPrice.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-item id="product-photo">
+            <ion-label position="stacked">Photo</ion-label>
+            <ion-input  type="file" #productPhoto = "ngModel" ngModel (change)="onFileChange($event)" required="true" class="form-control"></ion-input>
+        </ion-item>
+        <div>
+            <ion-checkbox (ionChange)="checked($event)">
+            </ion-checkbox>  Keep the existing Photo
+        </div>
+        <div id="product-photo-validations" *ngIf="((productPhoto.touched || productPhoto.dirty) || productPhoto.untouched) && productPhoto.invalid">
+            <ion-item lines="none" *ngIf="productPhoto.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-button (click)="onSubmit()"  fill="solid" shape="round">
+            Update 
+        </ion-button>
+    </div>
+</div>

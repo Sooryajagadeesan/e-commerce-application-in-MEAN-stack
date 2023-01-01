@@ -1,0 +1,13 @@
+ion-card {
+    width: 80% !important;
+    margin: auto !important;
+    margin-bottom: 20px !important;
+}
+
+
+@media (min-width: 769px) {
+    ion-card {
+        width: 60% !important;
+        margin: 10px 0 !important;;
+    }
+}

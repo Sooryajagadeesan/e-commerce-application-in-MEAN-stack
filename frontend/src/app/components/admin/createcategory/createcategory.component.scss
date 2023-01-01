@@ -1,0 +1,20 @@
+ion-button {
+    width: 50%;
+}
+
+#submit-btn {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+#form {
+    width: 80vw !important;
+    margin: auto !important;
+}
+
+@media (min-width: 769px) {
+    #form {
+        width: 60vw !important;
+        margin: 0 !important;
+    }
+}

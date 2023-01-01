@@ -1,0 +1,25 @@
+@media (min-width: 769px) {
+    #form {
+        width: 80%;
+        margin: auto;
+    }
+    
+    #form ion-button {
+        width: 20%;
+    }
+}
+
+form {
+    width: 80vw;
+    margin: auto;
+}
+
+#form input {
+    width: 50%;
+    margin-left: 80px;
+}
+
+#submit-btn {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}

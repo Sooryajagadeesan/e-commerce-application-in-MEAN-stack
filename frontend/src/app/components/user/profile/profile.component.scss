@@ -1,0 +1,24 @@
+.products-section {
+    margin-bottom: 10px;
+    border-bottom: 3px solid;
+}
+
+#content {
+    width: 70%;
+    margin: auto;
+}
+
+.fa-edit {
+    font-size: 18px;
+    font-weight: bold;
+}
+.error {
+    color: red;
+}
+
+@media (min-width: 769px) {
+    #content {
+        width: 70%;
+        margin: 0 !important;
+    }
+}

@@ -1,0 +1,33 @@
+<div id="container">
+    <h1>Update Category here.</h1>
+    <ion-item color="danger" *ngIf="!categoryToUpdate._id">
+        <ion-label text-wrap>No category selected to update, Please go To the Manage categories and select a category to update</ion-label>
+    </ion-item>
+    <ion-item color="success" *ngIf="updateSuccess">
+        <ion-label>
+            <h2>{{updateSuccess}} Updated</h2>
+        </ion-label>
+    </ion-item>
+
+    <ion-item  color="danger" *ngIf="updateFailure">
+        <ion-label>
+            <h2>{{updateFailure}}</h2>
+        </ion-label>
+    </ion-item>
+
+    <div id="form" *ngIf = "categoryToUpdate._id && (!updateSuccess && !updateFailure)">
+        <ion-item>
+            <ion-label position="stacked">Enter the category name</ion-label>
+            <ion-input [(ngModel)]="name" #categoryName="ngModel" type="text" required="true" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(categoryName.touched || categoryName.dirty) && categoryName.invalid">
+            <ion-item lines="none" *ngIf="categoryName.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-button (click)="onSubmit()" expand="block" fill="solid" shape="round">
+            Update category
+        </ion-button>
+    </div>
+    
+</div>

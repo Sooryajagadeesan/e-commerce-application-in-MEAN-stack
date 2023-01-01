@@ -1,0 +1,35 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-title>Header</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <ion-toolbar id="heading">
+        <ion-title>Title</ion-title>
+    </ion-toolbar>
+    <app-menu></app-menu>
+     <div class="content">
+        <ion-item>
+            <h2>{{title}}</h2>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{description}}</ion-label>
+        </ion-item>
+        <ion-item class="main-content">
+            <ng-content></ng-content>
+        </ion-item>
+    </div>
+    <ion-footer class="ion-no-border">
+        <ion-toolbar class="footer-container">
+          <ion-title>Any Queries</ion-title>
+          <ion-buttons slot="primary">
+              <ion-button color="primary" fill="solid">
+                  Contact Us
+              </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+</ion-content>
+
+

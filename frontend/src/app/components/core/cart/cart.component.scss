@@ -1,0 +1,47 @@
+#content {
+    padding-top: 50px !important;
+}
+#header {
+    position: fixed;
+    top: 40px;
+    width: 90%;
+    left: 55px;
+    
+}
+
+#check-list h2 {
+    display: none;
+}
+
+#cart-items {
+    width: 80%;
+    margin: auto !important;
+}
+
+@media (min-width: 769px) {
+    #header {
+        position: sticky;
+        top: 50px;
+    }
+    #check-list h2 {
+        display: block;
+    }
+    #cart-items {
+        width: 80%;
+        margin: 0 !important;
+    }
+    
+}
+
+
+
+#items {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px !important;
+}
+
+ion-toolbar {
+    z-index: 990 !important;
+}

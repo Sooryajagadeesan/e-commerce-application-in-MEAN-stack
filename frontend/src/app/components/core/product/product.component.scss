@@ -1,0 +1,15 @@
+@media (min-width: 769px) {
+    img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+ion-toolbar {
+    --background: transparent !important;
+    z-index: 10 !important;
+}
+
+ion-card {
+    width: 250px !important;
+}

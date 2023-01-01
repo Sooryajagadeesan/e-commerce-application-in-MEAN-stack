@@ -1,0 +1,32 @@
+@media (min-width: 769px) {
+    ion-split-pane ion-menu{
+        width: 12%;
+    }
+
+    ion-split-pane {
+        // cursor: pointer;
+        width: 16%;
+        position: fixed !important;
+        top: 55px;
+        // left: 10px !important;
+    }
+}
+
+ion-split-pane {
+    z-index: -1;
+    position: fixed !important;
+    top: 40px;
+    left: 5px;
+    // --width:90% !important;
+}
+
+
+
+.active {
+    --background: rgb(46, 46, 95);
+    color: #fff;
+}
+
+.no-z-index {
+    z-index : 200;
+}

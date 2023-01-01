@@ -1,0 +1,39 @@
+<div id="container">
+    <ion-grid >
+        <ion-row>
+            <ion-col size="5">
+                <h1>Admin Navigation</h1>
+                <ion-list>
+                    <ion-item [routerLink] = "['/admin/createcategory']">
+                        Create Categories
+                     </ion-item>
+                    <ion-item [routerLink] = "['/admin/managecategories']">
+                        Manage Categories
+                     </ion-item>
+                     <ion-item [routerLink] = "['/admin/createproduct']">
+                        Create Product
+                      </ion-item>
+                    <ion-item [routerLink] = "['/admin/manageproducts']">
+                        Manage Products
+                     </ion-item>
+                    <ion-item [routerLink] = "['/admin/manageorders']">
+                        Manage Orders
+                     </ion-item>
+                </ion-list>
+            </ion-col>
+            <ion-col size="6">
+                <h1>Admin Information</h1>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>Name</ion-label>
+                        <ion-label>{{name}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Email</ion-label>
+                        <ion-label>{{email}}</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

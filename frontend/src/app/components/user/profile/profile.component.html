@@ -1,0 +1,35 @@
+<div id="container">
+    <ion-item *ngIf="failure">
+        <ion-label>{{failure}}</ion-label>
+    </ion-item>
+
+    <div id="content">
+        <p class="error lastname-error"></p>
+    <h1>Your Profile</h1>
+    <ion-card *ngFor="let user of userProfile">
+        <ion-card-header>
+            <h1>{{userData.user.name}} <i class="fas fa-edit" (click)="nameAlertPrompt()"></i></h1>
+            <h2 *ngIf="userData.user.lastname">{{userData.user.lastname}} <i class="fas fa-edit" (click)="lastnameAlertPrompt()"></i></h2>
+            <ion-card-title>{{user.email}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <div *ngFor="let order of user.purchases; let i = index" class="products-section">
+                <div>
+                    <h2>ORDER {{i+1}}</h2>
+                    <p>amount : {{order.amount}}</p>
+                    <p>Expect delivery within 3 days</p>
+                    <h1>Status : {{order.order.status}}</h1>
+                    <h3>Placed Date : {{order.order.updated | date:'medium'}}</h3>
+                    <h2>Purchase {{i+1}}</h2>
+                    <div *ngFor="let prod of order.products;let j = index">
+                        <p>Product {{j+1}} name : {{prod.name}}</p>
+                        <p>Product {{j+1}} quantity : {{prod.quantity}}</p>
+                        <p>Product {{j+1}} price : {{prod.price}}</p>
+                     </div>
+                </div>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+    </div>
+</div>

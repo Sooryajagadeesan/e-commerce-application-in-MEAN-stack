@@ -1,0 +1,28 @@
+<div id="container">
+    <h1>Create a new Category here.</h1>
+    <div id="form">
+        <ion-item *ngIf = "success" color="success">
+            <ion-label >
+                <h2>{{success}}</h2>
+            </ion-label>
+        </ion-item>
+        <ion-item *ngIf = "failure">
+            <ion-label color="danger">
+                <h2>{{failure}}</h2>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Enter the category name</ion-label>
+            <ion-input [(ngModel)]="name" #categoryName = "ngModel" type="text" required="true" class="form-control"></ion-input>
+        </ion-item>
+        <div *ngIf="(categoryName.touched || categoryName.dirty) && categoryName.invalid">
+            <ion-item lines="none" *ngIf="categoryName.errors?.['required']">
+                <ion-label color="danger">This field is required*</ion-label>
+            </ion-item>
+        </div>
+        <ion-button (click)="onSubmit()" id="submit-btn" expand="block" fill="solid" shape="round">
+            Create category
+        </ion-button>
+    </div>
+    
+</div>

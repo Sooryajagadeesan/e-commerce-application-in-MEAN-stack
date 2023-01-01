@@ -1,0 +1,46 @@
+#flex-container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    width: 78%;
+    margin: auto !important;
+}
+
+ion-select {
+    width: 40%;
+    border: 2px solid;
+}
+
+
+
+@media (min-width:769px) {
+    #header {
+        display: flex !important;
+        background-color: magenta;
+        position: fixed;
+        top: 60px;
+        z-index: 1;
+        width: 70%;
+    }
+
+    #flex-container {
+        display: flex;
+        gap: 50px;
+        flex-wrap: wrap;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+#header {
+    background-color: magenta;
+    position: fixed;
+    top: 58px;
+    right: 10px;
+    z-index: 1;
+    width:80%;
+    display: none;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}

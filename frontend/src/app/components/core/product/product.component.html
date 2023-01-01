@@ -1,0 +1,55 @@
+<ion-card class={{product.name.trim()}}>
+    <ion-card-header>
+        <img src={{productPhoto}} width="300" alt="product image">
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title>{{product.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-item>
+            <ion-label>{{product.description}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label text-wrap="true">Price(per Kg) : </ion-label>
+            <ion-label>{{product.price}}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="showModifyBtns">
+            <ion-label>Quantity : </ion-label>
+            <ion-label> <ion-badge class="product-quantity">{{product.quantity}}</ion-badge> </ion-label>
+        </ion-item>
+        
+        <div *ngIf="showModifyBtns">
+            <ion-row>
+                <ion-col size="6">
+                    <!-- <ion-buttons slot="start"> -->
+                        <ion-button (click)="incrementCartItem()" color="medium" fill="solid" class="ion-text-start">
+                            <ion-icon slot="start" name="add"></ion-icon>1
+                        </ion-button>
+                    <!-- </ion-buttons> -->
+                    
+                    <!-- </ion-buttons> -->
+                </ion-col>
+                <ion-col size="6" class="ion-text-right">
+                    <!-- <ion-buttons slot="start"> -->
+                        
+                    <!-- </ion-buttons> -->
+                    <!-- <ion-buttons slot="end"> -->
+                        <ion-button (click)="onRemoveFromCart()" color="medium" fill="solid" class="ion-text-end">
+                            <ion-icon slot="start" name="remove"></ion-icon>1
+                        </ion-button>
+                    <!-- </ion-buttons> -->
+                </ion-col>
+            </ion-row>
+        </div>
+
+
+        <ion-button color="success" expand="block" (click)="onAddToCart()" *ngIf="addToCart">
+            <ion-icon slot="start" name="add" ></ion-icon>
+            Add to Cart
+        </ion-button>
+    
+        <ion-button color="danger" expand="block" (click)="onDeleteFromCart()" *ngIf="removeFromCart">
+            <ion-icon slot="start" name="remove"></ion-icon>
+            Remove from cart
+        </ion-button> 
+    </ion-card-content>
+</ion-card>
